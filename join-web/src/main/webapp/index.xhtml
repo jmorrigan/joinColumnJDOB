@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            <h:form>
+            <p:panel>
+            <h2>CREAR USUARIO CON CUENTA</h2>
+            <p:inputText value="#{usuarioController.inverdto.nombre}"></p:inputText>
+            <p:inputText value="#{usuarioController.inverdto.apellido}"></p:inputText>
+            <p:commandButton value="guardar" action="#{usuarioController.crearUsuario(usuarioController.inverdto)}" update="lista" >
+            </p:commandButton>
+            
+             
+            
+            <p:separator></p:separator>
+            
+             <h2>CREAR USUARIO SIN CUENTA</h2>
+             <p:inputText value="#{usuarioController.nombre}"></p:inputText>
+             <p:inputText value="#{usuarioController.apellido}"></p:inputText>
+            
+             <p:commandButton value="crear" action="#{usuarioController.crearUserSolo()}" update="lista">
+             </p:commandButton>
+             
+             <p:separator></p:separator>
+             
+             <h2>CREAR CUENTA SOLA</h2>
+                <p:inputText value="#{usuarioController.inverdto.id}"></p:inputText>
+                <p:commandButton value="buscar" action="#{usuarioController.crearCuentaUser(usuarioController.inverdto)}" update="lista" >
+                </p:commandButton>
+             
+                
+                <p:dataTable id="lista" var="p" value="#{usuarioController.obtenerDatos()}" paginator="true" rows="3">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{p.id}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="NOMBRE">
+                        <h:outputText value="#{p.nombre}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="APELLIDO">
+                        <h:outputText value="#{p.apellido}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="NUMERO CUENTA">
+                        <h:outputText value="#{p.cuenta.numero}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="ID_INVERSOR_CUENTA">
+                        <h:outputText value="#{p.cuenta.inversor.id}"></h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+           </h:form>   
+        </h:form>
+    </h:body>
+</html>
+
